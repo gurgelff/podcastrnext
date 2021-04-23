@@ -28,14 +28,16 @@ type HomeProps = {
 };
 
 export default function Home({ episodes_all, episodes_latest }: HomeProps) {
-  const { play } = useContext(PlayerContext);
+  const { playList } = useContext(PlayerContext);
+  const episodeList = [...episodes_latest, ...episodes_all];
+
   return (
     <div className={styles.homepage}>
       <section className={styles.latestEpisodes}>
         <h2>Últimos lançamentos</h2>
 
         <ul>
-          {episodes_latest.map((episode) => {
+          {episodes_latest.map((episode, index) => {
             return (
               <li key={episode.id}>
                 <Image
@@ -52,10 +54,13 @@ export default function Home({ episodes_all, episodes_latest }: HomeProps) {
                   </Link>
                   <p>{episode.members}</p>
                   <span>{episode.duration_formatted}</span>
-                  <span>{episode.duration_formatted}</span>
+                  <span>{episode.published_at_formatted}</span>
                 </div>
 
-                <button type="button" onClick={() => play(episode)}>
+                <button
+                  type="button"
+                  onClick={() => playList(episodeList, index)}
+                >
                   <img src="/play-green.svg" alt="Tocando episódio" />
                 </button>
               </li>
@@ -79,7 +84,7 @@ export default function Home({ episodes_all, episodes_latest }: HomeProps) {
           </thead>
 
           <tbody>
-            {episodes_all.map((episode) => {
+            {episodes_all.map((episode, index) => {
               return (
                 <tr key={episode.id}>
                   <td style={{ width: 72 }}>
@@ -101,7 +106,14 @@ export default function Home({ episodes_all, episodes_latest }: HomeProps) {
                   </td>
                   <td>{episode.duration_formatted}</td>
                   <td>
-                    <button type="button">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        playList(episodeList, index + episodes_latest.length)
+                        // note on index: since this mapping starts from 2, 
+                        // we need to ignore the first two latest episodes.
+                      }
+                    >
                       <img src="/play-green.svg" alt="Tocar episódio" />
                     </button>
                   </td>
