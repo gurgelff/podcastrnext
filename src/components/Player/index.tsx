@@ -3,7 +3,7 @@ import Image from "next/image";
 import Slider from "rc-slider";
 
 import { usePlayer } from "../../contexts/playerContext";
-import { convertTime } from '../../utils/convertTime';
+import { convertTime } from "../../utils/convertTime";
 
 import styles from "./styles.module.scss";
 import "rc-slider/assets/index.css";
@@ -23,6 +23,7 @@ export function Player() {
     hasNext,
     hasPrev,
     setPlayingState,
+    clearPlayerState
   } = usePlayer();
   const episode = episodeList[currentEpisodeIndex];
   const [progress, setProgress] = useState(0);
@@ -30,10 +31,23 @@ export function Player() {
   const setupProgressListener = () => {
     audioRef.current.currentTime = 0; //reset time
 
-    audioRef.current.addEventListener('timeupdate', () => {
+    audioRef.current.addEventListener("timeupdate", () => {
       setProgress(Math.floor(audioRef.current.currentTime));
     });
-  } 
+  };
+
+  const handleSeek = (amount: number) => {
+    audioRef.current.currentTime = amount;
+    setProgress(amount);
+  };
+
+  const handleEpisodeEnded = () => {
+    if (hasNext) {
+      playNext();
+    } else {
+      clearPlayerState();
+    }
+  }
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -71,6 +85,9 @@ export function Player() {
           <div className={styles.slider}>
             {episode ? (
               <Slider
+                max={episode.duration}
+                value={progress}
+                onChange={handleSeek}
                 trackStyle={{ backgroundColor: "#04d361" }}
                 railStyle={{ backgroundColor: "#9f75ff" }}
                 handleStyle={{ borderColor: "#04d361", borderWidth: 4 }}
@@ -91,6 +108,7 @@ export function Player() {
             onPlay={() => setPlayingState(true)}
             onPause={() => setPlayingState(false)}
             onLoadedMetadata={setupProgressListener}
+            onEnded={handleEpisodeEnded}
           />
         )}
 
@@ -98,7 +116,7 @@ export function Player() {
           <button
             type="button"
             disabled={!episode || episodeList.length == 1}
-              // it doesn't make sense to shuffle on a list of 1 episode
+            // it doesn't make sense to shuffle on a list of 1 episode
             onClick={toggleShuffle}
             className={isShuffling ? styles.isActive : ""}
           >
