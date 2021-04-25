@@ -2,10 +2,12 @@ import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 
 import { api } from "../../services/api";
 import { convertTime } from "../../utils/convertTime";
+import { usePlayer } from '../../contexts/playerContext';
+
 import styles from "./episode.module.scss";
 
 type Episode = {
@@ -24,23 +26,25 @@ type EpisodeProps = {
   episode: Episode;
 };
 const Episode = ({ episode }: EpisodeProps) => {
+  const { play } = usePlayer();
+
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
-        <button type="button">
-          <img src="/arrow-left.svg" alt="Voltar" />
-        </button>
+        <Link href="/">
+          <button type="button">
+            <img src="/arrow-left.svg" alt="Voltar" />
+          </button>
+        </Link>
         <Image
           width={700}
           height={160}
           src={episode.thumbnail}
           objectFit="cover"
         />
-        <Link href="/">
-          <button type="button">
-            <img src="/play.svg" alt="Tocar episódio" />
-          </button>
-        </Link>
+        <button type="button" onClick={() => play(episode)}>
+          <img src="/play.svg" alt="Tocar episódio" />
+        </button>
       </div>
 
       <header>
@@ -67,13 +71,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
   });
 
-  const paths = data.map(episode => {
+  const paths = data.map((episode) => {
     return {
       params: {
-        slug: episode.id
-      }
-    }
-  })
+        slug: episode.id,
+      },
+    };
+  });
 
   return {
     paths,

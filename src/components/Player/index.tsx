@@ -1,8 +1,8 @@
-import { useContext, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Slider from "rc-slider";
 
-import { PlayerContext } from "../../contexts/playerContext";
+import { usePlayer } from "../../contexts/playerContext";
 
 import styles from "./styles.module.scss";
 import "rc-slider/assets/index.css";
@@ -12,11 +12,17 @@ export function Player() {
     episodeList,
     currentEpisodeIndex,
     isPlaying,
+    isLooping,
+    isShuffling,
     togglePlay,
+    toggleLoop,
+    toggleShuffle,
     playNext,
     playPrevious,
+    hasNext,
+    hasPrev,
     setPlayingState,
-  } = useContext(PlayerContext);
+  } = usePlayer();
   const episode = episodeList[currentEpisodeIndex];
 
   useEffect(() => {
@@ -49,7 +55,7 @@ export function Player() {
         </div>
       )}
 
-      <footer className={!episode ? styles.emptyPlayer : null}>
+      <footer className={!episode ? styles.empty : ""}>
         <div className={styles.progress}>
           <span>00:00</span>
           <div className={styles.slider}>
@@ -71,16 +77,27 @@ export function Player() {
             ref={audioRef}
             src={episode.url}
             autoPlay
+            loop={isLooping}
             onPlay={() => setPlayingState(true)}
             onPause={() => setPlayingState(false)}
           />
         )}
 
         <div className={styles.buttons}>
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode || episodeList.length == 1}
+              // it doesn't make sense to shuffle on a list of 1 episode
+            onClick={toggleShuffle}
+            className={isShuffling ? styles.isActive : ""}
+          >
             <img src="/shuffle.svg" alt="Aleatório" />
           </button>
-          <button type="button" disabled={!episode} onClick={playPrevious}>
+          <button
+            type="button"
+            disabled={!episode || !hasPrev}
+            onClick={playPrevious}
+          >
             <img src="/play-previous.svg" alt="Tocar anterior" />
           </button>
           <button
@@ -95,10 +112,19 @@ export function Player() {
               <img src="/play.svg" alt="Tocar" />
             )}
           </button>
-          <button type="button" disabled={!episode} onClick={playNext}>
+          <button
+            type="button"
+            disabled={!episode || !hasNext}
+            onClick={playNext}
+          >
             <img src="/play-next.svg" alt="Tocar próximo" />
           </button>
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode}
+            onClick={toggleLoop}
+            className={isLooping ? styles.isActive : ""}
+          >
             <img src="/repeat.svg" alt="Repetir" />
           </button>
         </div>

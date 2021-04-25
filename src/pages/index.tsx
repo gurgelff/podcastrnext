@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { GetStaticProps } from "next";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -7,7 +6,7 @@ import Link from "next/link";
 
 import { api } from "../services/api";
 import { convertTime } from "../utils/convertTime";
-import { PlayerContext } from "../contexts/playerContext";
+import { usePlayer } from "../contexts/playerContext";
 
 import styles from "./home.module.scss";
 
@@ -28,7 +27,7 @@ type HomeProps = {
 };
 
 export default function Home({ episodes_all, episodes_latest }: HomeProps) {
-  const { playList } = useContext(PlayerContext);
+  const { playList } = usePlayer();
   const episodeList = [...episodes_latest, ...episodes_all];
 
   return (
