@@ -115,7 +115,7 @@ export function Player() {
         <div className={styles.buttons}>
           <button
             type="button"
-            disabled={!episode || episodeList.length == 1}
+            disabled={!episode || episodeList.length == 1 || isLooping}
             // it doesn't make sense to shuffle on a list of 1 episode
             onClick={toggleShuffle}
             className={isShuffling ? styles.isActive : ""}
@@ -150,7 +150,7 @@ export function Player() {
           </button>
           <button
             type="button"
-            disabled={!episode}
+            disabled={!episode || isShuffling}
             onClick={toggleLoop}
             className={isLooping ? styles.isActive : ""}
           >
