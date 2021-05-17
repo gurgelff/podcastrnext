@@ -100,16 +100,16 @@ export default function Home({ episodes_all, episodes_latest }: HomeProps) {
                       <a>{episode.title}</a>
                     </Link>
                   </td>
-                  <td style={{ width: 100 }}>
-                    {episode.published_at_formatted}
-                  </td>
+                  <td style={{ width: 100 }}>{episode.members}</td>
+
                   <td>{episode.duration_formatted}</td>
                   <td>
                     <button
                       type="button"
-                      onClick={() =>
-                        playList(episodeList, index + episodes_latest.length)
-                        // note on index: since this mapping starts from 2, 
+                      onClick={
+                        () =>
+                          playList(episodeList, index + episodes_latest.length)
+                        // note on index: since this mapping starts from 2,
                         // we need to ignore the first two latest episodes.
                       }
                     >
