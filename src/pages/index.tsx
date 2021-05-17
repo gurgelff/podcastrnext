@@ -102,7 +102,11 @@ export default function Home({ episodes_all, episodes_latest }: HomeProps) {
                   </td>
                   <td style={{ width: 100 }}>{episode.members}</td>
 
-                  <td>{episode.duration_formatted}</td>
+                  <td>
+                    {episode.published_at_formatted}
+                    {"\t"}
+                    {episode.duration_formatted}
+                  </td>
                   <td>
                     <button
                       type="button"
