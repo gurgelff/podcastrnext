@@ -1,5 +1,5 @@
 .homepage {
-  padding: 0 4rem;
+  padding: 0 1rem;
   height: calc(100vh - 6.5rem);
   overflow-y: scroll; // let the sections scroll alone.
 
@@ -30,7 +30,7 @@
 
       img {
         width: 6rem;
-        height: 6rem;
+        height: 5rem;
         border-radius: 1rem;
       }
 
@@ -141,8 +141,8 @@
 
       img {
         width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 0.5;
+        height: 2rem;
+        border-radius: 0.5rem;
       }
 
       a {
