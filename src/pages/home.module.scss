@@ -28,7 +28,7 @@
       display: flex;
       align-items: center;
 
-     img {
+      img {
         width: 6rem;
         height: 5rem;
         border-radius: 1rem;
@@ -56,7 +56,7 @@
         p {
           font-size: 0.875rem;
           margin-top: 0.5rem;
-          
+
           max-width: 70%;
           white-space: nowrap;
           overflow: hidden;
@@ -177,5 +177,154 @@
         }
       }
     }
+  }
+}
+
+//small desktop
+@media (max-width: 1200px) {
+  .latestEpisodes ul li {
+    width: 19rem;
+  }
+}
+
+//really small desktop
+@media (max-width: 1099px) {
+  .latestEpisodes {
+    ul {
+      li {
+        width: 18rem;
+      }
+    }
+  }
+}
+
+//tablet
+@media (max-width: 980px) {
+  .latestEpisodes {
+    ul {
+      li {
+        width: 17rem;
+      }
+    }
+
+    li button {
+      width: 1.8rem !important;
+      height: 1.8rem !important;
+
+      right: 0.5rem !important;
+      bottom: 1rem;
+    }
+  }
+
+  .episodeDetails a {
+    font-size: 15px;
+  }
+
+  .episodeDetails span {
+    font-size: 12px !important;
+  }
+}
+
+.allEpisodes table td button {
+  width: 1.8rem !important;
+  height: 1.8rem !important;
+}
+
+//smaller tablet
+@media (max-width: 950px) {
+  .latestEpisodes {
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        width: 20rem;
+      }
+    }
+
+    li button {
+      width: 1.8rem !important;
+      height: 1.8rem !important;
+
+      right: 0.5rem !important;
+      bottom: 1rem !important;
+    }
+  }
+
+  .allEpisodes table td button {
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+  }
+  .episodeDetails a {
+    font-size: 15px;
+  }
+
+  .episodeDetails span {
+    font-size: 12px !important;
+  }
+
+  .allEpisodes td {
+    font-size: 0.7rem !important;
+  }
+
+  .allEpisodes a {
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .allEpisodes td:nth-child(3),
+  .allEpisodes th:nth-child(3),
+  .allEpisodes td:nth-child(4),
+  .allEpisodes th:nth-child(4),
+  .allEpisodes td:nth-child(1),
+  .allEpisodes th:nth-child(1) {
+    display: none;
+    display: none;
+  }
+}
+
+//tablet
+@media (max-width: 500px) {
+  .latestEpisodes {
+    ul {
+      li {
+        width: 15rem;
+      }
+    }
+
+    li button {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+      border-radius: 35% !important;
+
+      right: 0.1rem !important;
+    }
+  }
+  .allEpisodes table td button {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border-radius: 35% !important;
+  }
+  .episodeDetails a {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
+
+  .episodeDetails span {
+    font-size: 10px !important;
+  }
+
+  .allEpisodes a {
+    font-size: 0.8rem !important;
+  }
+
+  .allEpisodes th,
+  .allEpisodes td {
+    padding: 0;
   }
 }

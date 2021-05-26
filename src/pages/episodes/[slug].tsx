@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import Head from "next/head";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { api } from "../../services/api";
 import { convertTime } from "../../utils/convertTime";
-import { usePlayer } from '../../contexts/playerContext';
+import { usePlayer } from "../../contexts/playerContext";
 
 import styles from "./episode.module.scss";
 
@@ -37,7 +37,13 @@ const Episode = ({ episode }: EpisodeProps) => {
       <div className={styles.thumbnailContainer}>
         <Link href="/">
           <button type="button">
-            <img src="/arrow-left.svg" alt="Voltar" />
+            <img
+              src="/arrow-left.svg"
+              alt="Voltar"
+              style={{
+                width: "40%",
+              }}
+            />
           </button>
         </Link>
         <Image
@@ -47,7 +53,13 @@ const Episode = ({ episode }: EpisodeProps) => {
           objectFit="cover"
         />
         <button type="button" onClick={() => play(episode)}>
-          <img src="/play.svg" alt="Tocar episódio" />
+          <img
+            src="/play.svg"
+            alt="Tocar episódio"
+            style={{
+              width: "70%",
+            }}
+          />
         </button>
       </div>
 

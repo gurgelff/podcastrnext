@@ -1,10 +1,10 @@
 .playerContainer {
-  padding: 3rem 4rem;
+  padding: 3rem 1rem;
   width: 26.5rem;
-  height: 100vh;
-  
+  height: auto;
+
   position: sticky;
-  top:0;
+  top: 0;
 
   background: var(--purple-500);
   color: var(--white);
@@ -35,7 +35,7 @@
 }
 
 .emptyPlayer {
-  width: 100%;
+  width: 50px;
   height: 20rem;
   border: 1.5px dashed var(--purple-300);
   border-radius: 1.5rem;
@@ -54,6 +54,7 @@
 
 .currentEpisode {
   text-align: center;
+  height: auto !important;
 
   img {
     border-radius: 1.5rem;
@@ -81,15 +82,15 @@
   font-size: 0.875rem;
 
   span {
-    display: inline-block;
     width: 4rem;
     text-align: center;
+    font-size: 0.75rem;
   }
 
   .slider {
     flex: 1;
     .emptySlider {
-      width: 100%;
+      width: 50px;
       height: 4px;
       background: var(--purple-300);
       border-radius: 2px;
@@ -130,9 +131,9 @@
     }
 
     &.playButton {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 1rem;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 0.8rem;
       background: var(--purple-400);
 
       transition: filter 0.2s;
@@ -140,6 +141,77 @@
       &:hover:not(:disabled) {
         filter: brightness(0.95);
       }
+    }
+  }
+}
+
+//small desktop screen
+@media (max-width: 1200px) {
+  .playerContainer,
+  .emptyPlayer {
+    width: 300px;
+  }
+}
+
+//smaller tablet
+@media (max-width: 900px) {
+  .playerContainer,
+  .emptyPlayer {
+    width: 200px;
+
+    strong {
+      font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    span {
+      align-items: center;
+      font-size: 0.85rem;
+    }
+  }
+
+  .currentEpisode span {
+    font-size: 0.8rem;
+  }
+
+  .buttons img {
+    width: 18px;
+  }
+}
+
+//phone
+@media (max-width: 500px) {
+  .playerContainer,
+  .emptyPlayer {
+    width: 150px;
+
+    strong {
+      font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+
+    span {
+      align-items: center;
+      font-size: 0.7rem;
+    }
+  }
+
+  .currentEpisode span {
+    font-size: 0.8rem;
+  }
+
+  .buttons img {
+    width: 10px;
+  }
+  .buttons button {
+    &.playButton {
+      height: 27px;
     }
   }
 }

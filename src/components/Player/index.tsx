@@ -23,7 +23,7 @@ export function Player() {
     hasNext,
     hasPrev,
     setPlayingState,
-    clearPlayerState
+    clearPlayerState,
   } = usePlayer();
   const episode = episodeList[currentEpisodeIndex];
   const [progress, setProgress] = useState(0);
@@ -47,7 +47,7 @@ export function Player() {
     } else {
       clearPlayerState();
     }
-  }
+  };
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -58,15 +58,15 @@ export function Player() {
   return (
     <div className={styles.playerContainer}>
       <header>
-        <img src="/playing.svg" alt="Tocando agora." />
+        <img style={{ width: "25%" }} src="/playing.svg" alt="Tocando agora." />
         <strong>Tocando agora</strong>
       </header>
 
       {episode ? (
         <div className={styles.currentEpisode}>
           <Image
-            width={592}
-            height={592}
+            width={"150vw"}
+            height={"120vw"}
             src={episode.thumbnail}
             objectFit="cover"
           />
@@ -81,10 +81,10 @@ export function Player() {
 
       <footer className={!episode ? styles.empty : ""}>
         <div className={styles.progress}>
-          <span>{convertTime(progress)}</span>
           <div className={styles.slider}>
             {episode ? (
               <Slider
+                style={{ flex: 1 }}
                 max={episode.duration}
                 value={progress}
                 onChange={handleSeek}
@@ -96,9 +96,12 @@ export function Player() {
               <div className={styles.emptySlider} />
             )}
           </div>
-          <span>{convertTime(episode?.duration ?? 0)}</span>
         </div>
 
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <span>{convertTime(progress)}</span>
+          <span>{convertTime(episode?.duration ?? 0)}</span>
+        </div>
         {episode && (
           <audio
             ref={audioRef}
