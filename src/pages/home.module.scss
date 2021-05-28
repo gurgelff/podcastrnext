@@ -223,9 +223,9 @@
 }
 
 //smaller tablet
-@media (max-width: 950px) {
+@media (max-width: 950px), (min-height: 1000px) {
   .homepage {
-    height: 47vh;
+    height: 55vh;
   }
 
   .latestEpisodes {
