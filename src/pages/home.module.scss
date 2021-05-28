@@ -4,8 +4,8 @@
   overflow-y: scroll; // let the sections scroll alone.
 
   h2 {
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -206,14 +206,6 @@
         width: 17rem;
       }
     }
-
-    li button {
-      width: 1.8rem !important;
-      height: 1.8rem !important;
-
-      right: 0.5rem !important;
-      bottom: 1rem;
-    }
   }
 
   .episodeDetails a {
@@ -241,14 +233,6 @@
       li {
         width: 20rem;
       }
-    }
-
-    li button {
-      width: 1.8rem !important;
-      height: 1.8rem !important;
-
-      right: 0.5rem !important;
-      bottom: 1rem !important;
     }
   }
 
@@ -292,18 +276,19 @@
 //tablet
 @media (max-width: 500px) {
   .latestEpisodes {
+    h2 {
+      font-size: 1.4rem;
+    }
     ul {
       li {
         width: 15rem;
+        height: 10rem;
       }
-    }
 
-    li button {
-      width: 1.5rem !important;
-      height: 1.5rem !important;
-      border-radius: 35% !important;
-
-      right: 0.1rem !important;
+      button {
+        width: 1.8rem !important;
+        height: 1.8rem !important;
+      }
     }
   }
   .allEpisodes table td button {
@@ -321,6 +306,25 @@
 
   .episodeDetails span {
     font-size: 10px !important;
+    margin-left: -5%;
+
+    &:last-child {
+      margin-left: 18.5% !important;
+      padding-left: 0.5rem;
+
+      &::before {
+        //dot
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background: #ddd;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%); //absolute center
+      }
+    }
   }
 
   .allEpisodes a {

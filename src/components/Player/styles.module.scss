@@ -88,6 +88,7 @@
   }
 
   .slider {
+    padding: 0.3rem;
     flex: 1;
     .emptySlider {
       width: 100%;
@@ -178,12 +179,13 @@
 @media (max-width: 500px) {
   .playerContainer,
   .emptyPlayer {
+    height: 65vh;
     strong {
       font-size: 0.875rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 300px;
+      max-width: 250px;
     }
 
     span {
