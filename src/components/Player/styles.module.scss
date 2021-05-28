@@ -182,10 +182,6 @@
     height: 65vh;
     strong {
       font-size: 0.875rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 250px;
     }
 
     span {
@@ -202,5 +198,9 @@
     img {
       width: 120px;
     }
+  }
+
+  .tocando {
+    max-width: 500px;
   }
 }
