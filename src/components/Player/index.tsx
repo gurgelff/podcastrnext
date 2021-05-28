@@ -59,7 +59,7 @@ export function Player() {
     <div className={styles.playerContainer}>
       <header>
         <img style={{ width: "25%" }} src="/playing.svg" alt="Tocando agora." />
-        <strong className={styles.tocando}>Tocando agora</strong>
+        <strong>Tocando agora</strong>
       </header>
 
       {episode ? (
@@ -70,7 +70,7 @@ export function Player() {
             src={episode.thumbnail}
             objectFit="cover"
           />
-          <strong>{episode.title}</strong>
+          <strong className={styles.clippingText}>{episode.title}</strong>
           <span>{episode.members}</span>
         </div>
       ) : (
