@@ -232,12 +232,12 @@
 
 //smaller tablet
 @media (max-width: 950px) {
+  .homepage {
+    height: 47vh;
+  }
+
   .latestEpisodes {
     ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
       li {
         width: 20rem;
       }
@@ -274,6 +274,11 @@
 }
 
 @media (max-width: 800px) {
+  .latestEpisodes ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .allEpisodes td:nth-child(3),
   .allEpisodes th:nth-child(3),
   .allEpisodes td:nth-child(4),

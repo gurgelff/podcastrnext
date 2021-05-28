@@ -6,3 +6,12 @@
     width: 66.6%;
   }
 }
+
+@media (max-width: 950px) {
+  .wrapper {
+    flex-direction: column;
+    main {
+      width: 100%;
+    }
+  }
+}

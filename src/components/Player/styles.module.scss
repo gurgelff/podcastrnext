@@ -1,5 +1,5 @@
 .playerContainer {
-  padding: 3rem 1rem;
+  padding: 1rem;
   width: 26.5rem;
   height: auto;
 
@@ -45,7 +45,7 @@
     rgba(0, 0, 0, 0) 100%
   );
 
-  padding: 4rem;
+  padding: 0.5rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -62,14 +62,14 @@
 
   strong {
     display: block;
-    margin-top: 2rem;
+    margin-top: 0.2rem;
     font: 600 1.25rem Lexend, sans-serif;
     line-height: 1.75rem;
   }
 
   span {
     display: block;
-    margin-top: 1rem;
+    margin-top: 0.2rem;
     opacity: 0.6;
     line-height: 1.5rem;
   }
@@ -102,7 +102,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2.5rem;
   gap: 1.5rem;
 
   button {
@@ -132,7 +131,7 @@
 
     &.playButton {
       width: 2.3rem;
-      height: 2.3rem;
+      height: 2.1rem;
       border-radius: 0.8rem;
       background: var(--purple-400);
 
@@ -154,17 +153,14 @@
 }
 
 //smaller tablet
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .playerContainer,
   .emptyPlayer {
-    width: 200px;
+    width: 100%;
+    height: 40vh;
 
     strong {
       font-size: 0.875rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 200px;
     }
 
     span {
@@ -176,24 +172,18 @@
   .currentEpisode span {
     font-size: 0.8rem;
   }
-
-  .buttons img {
-    width: 18px;
-  }
 }
 
 //phone
 @media (max-width: 500px) {
   .playerContainer,
   .emptyPlayer {
-    width: 150px;
-
     strong {
       font-size: 0.875rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 150px;
+      max-width: 300px;
     }
 
     span {
@@ -202,16 +192,13 @@
     }
   }
 
-  .currentEpisode span {
-    font-size: 0.8rem;
-  }
+  .currentEpisode {
+    span {
+      font-size: 0.8rem;
+    }
 
-  .buttons img {
-    width: 10px;
-  }
-  .buttons button {
-    &.playButton {
-      height: 27px;
+    img {
+      width: 120px;
     }
   }
 }
