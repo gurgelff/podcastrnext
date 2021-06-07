@@ -102,8 +102,7 @@
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+  justify-content: space-between;
 
   button {
     background: transparent;
@@ -172,6 +171,11 @@
 
   .currentEpisode span {
     font-size: 0.8rem;
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 10vw;
   }
 }
 
